@@ -1,0 +1,67 @@
+<div class="container list">
+    <h1>All Invoice List</h1>
+    <div class="row mb-3" >
+      <div class="col-lg-4">
+        <input type="text" class="form-control" placeholder="Search by Customer Name" [(ngModel)]="searchCustomerName" (input)="filterInvoices()">
+      </div>
+      <div class="col-lg-4">
+        <input type="text" class="form-control" placeholder="Search by INV-No" [(ngModel)]="searchInvoice" (input)="filterInvoices()">
+      </div>
+      <div class="col-lg-4">
+        <div class="btn btn-primary" routerLink="/create-invoice">Create New Record</div>
+      </div>
+    </div>
+    <ng-container>
+    <div *ngIf="pagedInvoices.length === 0" class="alert alert-warning" role="alert">
+      No record found for '{{ searchCustomerName || searchInvoice }}'.
+    </div>
+  </ng-container>
+    <ng-container *ngIf="!isLoading && pagedInvoices.length > 0">
+    <table class="table table-bordered table-striped table-dark mt-3" *ngIf="pagedInvoices.length > 0">
+      <thead>
+        <tr class="text-center">
+          <th style="width: 20%;">INV-No</th>
+          <th style="width: 20%;">Customer Name</th>
+          <th style="width: 40%;">Remarks</th>
+          <th style="width: 20%;">Created Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let invoice of pagedInvoices" class="text-center">
+          <td>{{ invoice.id }}</td>
+          <td>
+            <a [routerLink]="['/customer-details', invoice.id]" class="customer-name">{{ invoice.customerName }}</a>
+          </td>
+          <td (click)="showButtons(invoice)" (mouseleave)="hideButtons(invoice)" class="remarks">
+            <div *ngIf="invoice.isEditing">
+              <input type="text" [(ngModel)]="invoice.remarks" class="form-control">
+              <button class="btn btn-sm btn-success mt-2" (click)="updateRemarks(invoice)">Update</button>
+              <button class="btn btn-sm btn-secondary mt-2" (click)="cancelRemarks(invoice)">Cancel</button>
+            </div>
+            <div *ngIf="!invoice.isEditing">
+              <span>{{ invoice.remarks || 'No remarks available' }}</span>
+              <div *ngIf="invoice.showButtons" class="remarks-buttons">
+                <button class="btn btn-sm btn-warning" (click)="editRemarks(invoice)">Edit</button>
+                <button class="btn btn-sm btn-secondary" (click)="clearRemarks(invoice)">Clear</button>
+              </div>
+            </div>
+          </td>
+          <td>{{ invoice.createdAt | date: 'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  
+    <!-- No products message -->
+    <div *ngIf="!isLoading && pagedInvoices.length === 0" class="mt-3 center-load">
+      <h1>Loading...</h1>
+      <p>Please Check your Internet Connection</p>
+    </div>
+  
+    <div *ngIf="!isLoading && pagedInvoices.length > 0" class="pagination-controls text-center mt-3">
+      <button (click)="prevPage()" [disabled]="currentPage === 1" class="btn btn-secondary">Previous</button>
+      <span class="page_no">Page {{ currentPage }}</span>
+      <button (click)="nextPage()" [disabled]="pagedInvoices.length < itemsPerPage" class="btn btn-success">Next</button>
+    </div>
+  </div>
+  

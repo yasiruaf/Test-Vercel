@@ -1,0 +1,64 @@
+<div class="container create">
+    <h1>Create New Invoice</h1>
+    <div class="btn btn-primary mt-3" routerLink="/invoice-list">View All Records</div>
+    <div class="card mt-5">
+        <div class="card-body name-remarks">
+            <div class="row">
+              <div class="col-lg-1"></div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label><strong>Customer Name</strong></label>
+                        <span class="text-danger">*</span>
+                        <input [(ngModel)]="customerName" class="form-control mt-2" placeholder="Enter Customer Name" />
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label><strong>Remarks:</strong></label>
+                        <textarea [(ngModel)]="remarks" class="form-control mt-2" placeholder="Enter Details"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn btn-warning mt-5 ms-3" (click)="saveInvoice()">Save Invoice</div>
+
+    <!-- <table class="table table-bordered table-striped table-dark mt-3">
+        <thead>
+          <tr class="text-center">
+            <th style="width: 20%;">Sr. No</th>
+            <th style="width: 30%;">Product Name
+              <span class="text-danger">*</span></th>
+            <th style="width: 25%;">Product Price
+              <span class="text-danger">*</span></th>
+            <th style="width: 25%;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of productRows; let i = index" class="text-center">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <select class="form-control" [(ngModel)]="row.selectedProductId">
+                <option value="" disabled selected>
+                    <label>Select Product</label>
+                </option>
+                <option *ngFor="let product of ProductsList" [ngValue]="product.id">{{ product.name }}</option>
+              </select>
+            </td>
+            <td>
+              <input [(ngModel)]="row.price" class="form-control" placeholder="Enter Price" />
+            </td>
+            <td>
+              <div class="btn btn-danger" (click)="removeProductRow(i)">Remove</div>
+            </td>
+          </tr>
+          <tr *ngIf="productRows.length" class="text-center">
+            <td colspan="2">Total Price</td>
+            <td colspan="2">{{ getTotalSum() }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="btn btn-info mt-2" (click)="addProductRow()">Add Product</div>
+      <div class="btn btn-warning mt-2 ms-3" (click)="saveInvoice()">Save Invoice</div> -->
+</div>

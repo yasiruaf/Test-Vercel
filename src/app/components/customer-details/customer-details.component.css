@@ -1,0 +1,24 @@
+.list {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .input-debit:active,
+  .input-debit:focus {
+    box-shadow: unset !important;
+    outline: 0 !important;
+  }
+  
+  .input-credit:active,
+  .input-credit:focus {
+    box-shadow: unset !important;
+    outline: 0 !important;
+  }
+  
+  .center-load {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+  }

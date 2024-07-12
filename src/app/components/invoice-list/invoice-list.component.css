@@ -1,0 +1,41 @@
+.list {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .pagination-controls {
+    margin-top: 20px;
+  }
+  
+  button {
+    margin: 0 5px;
+  }
+  
+  .page_no {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .history-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .customer-name {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .center-load {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+  }
+  
+  .remarks {
+    cursor: pointer;
+  }
