@@ -12,14 +12,16 @@
   
       <!-- Show elements only when history is hidden -->
       <div *ngIf="!showHistory">
-        <div class="row my-3">
+        <div class="row my-4">
           <div class="col-lg-4">
+            <h5>Payment to Customer:</h5>
             <div class="input-group mb-3">
               <input [(ngModel)]="addDebCred.debit" type="text" class="form-control input-debit" placeholder="Enter debit amount">
               <button class="btn btn-outline-primary" type="button" (click)="debit()">Debit</button>
             </div>
           </div>
           <div class="col-lg-4">
+            <h5>Payment from Customer:</h5>
             <div class="input-group mb-3">
               <input [(ngModel)]="addDebCred.credit" type="text" class="form-control input-credit" placeholder="Enter credit amount">
               <button class="btn btn-outline-primary" type="button" (click)="credit()">Credit</button>
